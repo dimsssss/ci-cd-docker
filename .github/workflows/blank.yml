@@ -28,14 +28,15 @@ jobs:
         uses: actions/setup-node@v4.0.2
         with:
           # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
-          node-version: 18.04
-          architecture: x64
+          node-version: '18.04'
+          # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
+          architecture: 'x64'
           # File containing the version Spec of the version to use.  Examples: package.json, .nvmrc, .node-version, .tool-versions.
-          node-version-file: package.json
+          node-version-file: 'package.json'
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
-          cache: npm
+          cache: 'npm'
           # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: 'package-lock.json'
           
       # Runs a single command using the runners shell
       - name: Run a one-line script
