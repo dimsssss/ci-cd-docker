@@ -44,6 +44,10 @@ jobs:
       - name: Run a one-line script
         run: ./build.sh
 
+      # Runs a single command using the runners shell
+      - name: Build Dockerfile
+        run: docker build -t test ../docker/web
+
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
