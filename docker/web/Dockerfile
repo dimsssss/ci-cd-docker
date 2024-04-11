@@ -8,3 +8,5 @@ WORKDIR /usr/app/src
 COPY ./src ./
 
 EXPOSE 3000
+
+CMD ["node", "main.js"]

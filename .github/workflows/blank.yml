@@ -44,9 +44,18 @@ jobs:
       - name: Run a one-line script
         run: ./build.sh
 
-      # Runs a single command using the runners shell
-      - name: Build Dockerfile
-        run: docker build -t test ../docker/web
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push docker image to Amazon ECR
+        env:
+          REGISTRY: ${{ secrets.REGISTRY }}
+          REPOSITORY: ${{ secrets.REPOSITORY }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ../docker/web
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
